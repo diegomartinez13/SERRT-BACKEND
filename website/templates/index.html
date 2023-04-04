@@ -21,36 +21,18 @@
         <div class="container-fluid">
             <img type="image/png" src="static/images/icons8-race-car-96.png" alt="Logo" width="96px" height="96px"
                 class="rounded float-start shadow-lg bg-light">
-            <img type="image/png" src="static/images/Logo.png" alt="Official Team Logo" class="rounded float-end shadow-lg "
-                height="96px">
+            <img type="image/png" src="static/images/SolarCarLogo.png" alt="Official Team Logo" class="rounded float-end shadow-lg "
+                height="98px">
         </div>
     </nav>
 
-    {% with messages = get_flashed_messages(with_categories=true) %} {% if
-    messages %} {% for category, message in messages %} {% if category ==
-    'error' %}
-    <div class="alert alert-danger alter-dismissable fade show" role="alert">
-        {{ message }}
-        <button type="button" class="close" data-dismiss="alert">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
-    {% else %}
-    <div class="alert alert-success alter-dismissable fade show" role="alert">
-        {{ message }}
-        <button type="button" class="close" data-dismiss="alert">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
-    {% endif %} {% endfor %} {% endif %} {% endwith %}
-
-    <div class="container-fluid"> {% block dashboard %}
+    <div class="container-fluid"> <br> {% block dashboard %}
         <div class="row">
             <div class="col-md-4">
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Optimal velocity</h5>
-                        <p class="card-text display-4">45 mph</p>
+                        <p class="card-text display-4"><em id="optimal_velocity">0</em> mph</p>
                     </div>
                 </div>
             </div>
@@ -58,7 +40,7 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Solar Panel Output</h5>
-                        <p class="card-text display-4">50 W</p>
+                        <p class="card-text display-4"><em id="solar_panel_output">0</em> W</p>
                     </div>
                 </div>
             </div>
@@ -66,7 +48,7 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Current Temperature</h5>
-                        <p class="card-text display-4">25 &deg;C </p>
+                        <p class="card-text display-4"><em id="temp">0</em> &deg;C </p>
                     </div>
                 </div>
             </div>
@@ -77,10 +59,10 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Current Speed</h5>
-                        <p class="card-text display-4">60 mph</p>
+                        <p class="card-text display-4" id="current_speed">0 mph</p>
                         <div class="progress">
-                            <div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" role="progressbar" style="width: 60%;" aria-valuenow="60"
-                                aria-valuemin="0" aria-valuemax="100"></div>
+                            <div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" role="progressbar" style="width: 0;" aria-valuenow="0"
+                                aria-valuemin="0" aria-valuemax="60" id="progress-speed"></div>
                         </div>
                     </div>
                 </div>
@@ -89,16 +71,17 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Battery Status</h5>
-                        <p class="card-text display-4">80 %</p>
+                        <p class="card-text display-4" id="battery">0%</p>
                         <div class="progress">
-                            <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" style="width: 80%;" aria-valuenow="80"
-                                aria-valuemin="0" aria-valuemax="100"></div>
+                            <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" style="width: 0;" aria-valuenow="0"
+                                aria-valuemin="0" aria-valuemax="100" id="progress-battery"></div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
+        <br/>
         <div class="row mt-4">
             <div class="col-md-12">
                 <div class="card">
@@ -112,6 +95,7 @@
             </div>
         </div>
         {% endblock %}
+        <br>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
@@ -123,7 +107,8 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
-    <script type="text/javascript" src="{{ url_for('static', filename='index.js') }}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- <script src="static/index.js" type="js"></script> -->
 </body>
 
 </html>
